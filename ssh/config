@@ -1,0 +1,4 @@
+Host g
+	User git
+	HostName github.com
+	PreferredAuthentications publickey

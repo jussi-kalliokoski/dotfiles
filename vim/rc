@@ -1,0 +1,80 @@
+" To see what these things do, use :help, for instance :help nocompatible
+
+" If this stuff ends up in something else than .vimrc
+" Cool VIM stuff, probably on already
+set nocompatible
+" This is nice, and also probably on already.
+set showcmd
+" Yes for REGCPY! \o/ Try "+yy and in another document window press p (paste).
+let g:clipBrdDefault='+'
+
+set grepprg=grep\ -nH\ $*
+
+" Ctrl h and l for scrolling tabs \o/
+nnoremap <C-L> <Esc>:tabnext<CR>
+nnoremap <C-H> <Esc>:tabprevious<CR>
+" I never use TagStack anyway, so Ctrl+t for new tab
+nnoremap <C-T> <Esc>:tabnew<CR>:open 
+" Space is nice for toggling folds, yes?
+nnoremap <space> za
+" Ever played some computer games?
+nnoremap <F5> <Esc>:write<CR>
+
+" Colors are nice! Use this if the next one not available.
+colorscheme desert
+
+if has("gui_running")
+	" Toolbars are useless
+	set guioptions	-=T
+	" Nice, if available!
+	colorscheme carvedwoodcooler
+endif
+
+" Also, what to do with the colours if there's no syntax hilighting
+filetype on
+filetype plugin	on
+syntax enable
+" Since we have colours, why not hilite.
+" set hlsearch
+" nevermind, highlighting sucks
+
+" Pro tabs, hard, not expanded.
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+set noexpandtab
+
+" Mouse is not so nice when you're on a laptop (oops my sleeve touched the
+" touchpad), set to 'a' when you need it.
+set mouse=
+
+" This is nice for XML / HTML (try Ctrl+_)
+source ~/.vim/scripts/closetag.vim
+
+" Disable automatic comments
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" enable ooc syntax highlighting
+au BufNewFile,BufRead *.ooc set filetype=ooc
+
+" enable markdown syntax highlighting
+au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
+
+" Toggle between 4 spaces soft tabs and 8 spaces hard tabs with F2
+function! ToggleTabs()
+	if &tabstop == 8
+		set tabstop=4
+		set softtabstop=4
+		set shiftwidth=4
+		set expandtab
+		echo "Toggled to soft tabs with 4 spaces per column."
+	else
+		set tabstop=8
+		set softtabstop=8
+		set shiftwidth=8
+		set noexpandtab
+		echo "Toggled to hard tabs with 8 spaces per column."
+	endif
+endfunction
+
+nnoremap <F2> <Esc>:call ToggleTabs()<CR>
