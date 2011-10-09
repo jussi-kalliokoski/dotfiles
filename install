@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+# VIM settings
+if ["$VIMDIR" == ""]; then
+	VIMDIR=~/.vim
+fi
+cd vim
+for f in */; do
+	mkdir $VIMDIR/$f -p
+done
+for f in */*.vim; do
+	cp $f $VIMDIR/$f
+done
+cp rc ~/.vimrc
+cd ..
+
+HOMEDIR=~
+
+# Apply only the differences.
+
+copydiff(){
+	if [ -s $2 ]; then
+		git diff $1 $2 | awk '{if(match($0,"^ "))print $0}' >> $2
+	else
+		cp $1 $2
+	fi
+}
+
+# Shell settings
+copydiff shell/inputrc $HOMEDIR/.inputrc
+copydiff ssh/config $HOMEDIR/.ssh/config
