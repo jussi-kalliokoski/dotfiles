@@ -44,6 +44,9 @@ set softtabstop=8
 set shiftwidth=8
 set noexpandtab
 
+" Line numbering
+set number
+
 " Mouse is not so nice when you're on a laptop (oops my sleeve touched the
 " touchpad), set to 'a' when you need it.
 set mouse=
