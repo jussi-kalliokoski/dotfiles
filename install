@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
 
+HOMEDIR=~
+
 # VIM settings
 if ["$VIMDIR" == ""]; then
-	VIMDIR=~/.vim
+	VIMDIR=$HOMEDIR/.vim
 fi
 cd vim
 for f in */; do
@@ -11,10 +13,8 @@ done
 for f in */*.vim; do
 	cp $f $VIMDIR/$f
 done
-cp rc ~/.vimrc
+cp rc $HOMEDIR/.vimrc
 cd ..
-
-HOMEDIR=~
 
 # Apply only the differences.
 
@@ -29,3 +29,7 @@ copydiff(){
 # Shell settings
 copydiff shell/inputrc $HOMEDIR/.inputrc
 copydiff ssh/config $HOMEDIR/.ssh/config
+
+mkdir -p $HOMEDIR/.config/xcolors
+cp urxvt/thayer $HOMEDIR/.config/xcolors
+cp urxvt/xdefaults $HOMEDIR/.Xdefaults

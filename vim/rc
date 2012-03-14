@@ -26,8 +26,6 @@ colorscheme desert
 if has("gui_running")
 	" Toolbars are useless
 	set guioptions	-=T
-	" Nice, if available!
-	colorscheme carvedwoodcooler
 endif
 
 " Also, what to do with the colours if there's no syntax hilighting
