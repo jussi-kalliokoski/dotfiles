@@ -103,4 +103,4 @@ au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 au BufNewFile,BufRead *.less set filetype=less
 
 " enable coffeescript syntax highlighting
-au BufNewFile,BufRead *.less set filetype=coffee
+au BufNewFile,BufRead *.coffee set filetype=coffee
