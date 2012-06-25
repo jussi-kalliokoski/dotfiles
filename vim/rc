@@ -6,7 +6,7 @@ set nocompatible
 " This is nice, and also probably on already.
 set showcmd
 " Yes for REGCPY! \o/ Try "+yy and in another document window press p (paste).
-let g:clipBrdDefault='+'
+" let g:clipBrdDefault='+'
 
 set grepprg=grep\ -nH\ $*
 
@@ -19,18 +19,23 @@ nnoremap <C-T> <Esc>:tabnew<CR>:open
 nnoremap <space> za
 " Ever played some computer games?
 nnoremap <F5> <Esc>:write<CR>
+" Compile and quickfix
+nnoremap <F4> <Esc>:write<CR>:make<CR>:cw<CR>
 
-" Colors are nice! Use this if the next one not available.
+" Colors are nice!
 colorscheme desert
 
 if has("gui_running")
 	" Toolbars are useless
 	set guioptions	-=T
+	" Nice, if available!
+	colorscheme carvedwoodcooler
 endif
 
 " Also, what to do with the colours if there's no syntax hilighting
-filetype on
 filetype plugin	on
+filetype plugin indent on
+filetype on
 syntax enable
 " Since we have colours, why not hilite.
 " set hlsearch
@@ -49,17 +54,8 @@ set number
 " touchpad), set to 'a' when you need it.
 set mouse=
 
-" This is nice for XML / HTML (try Ctrl+_)
-source ~/.vim/scripts/closetag.vim
-
 " Disable automatic comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" enable ooc syntax highlighting
-au BufNewFile,BufRead *.ooc set filetype=ooc
-
-" enable markdown syntax highlighting
-au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
 " Toggle between 4 spaces soft tabs and 8 spaces hard tabs with F2
 function! ToggleTabs()
@@ -69,6 +65,12 @@ function! ToggleTabs()
 		set shiftwidth=4
 		set expandtab
 		echo "Toggled to soft tabs with 4 spaces per column."
+	elseif &tabstop == 4
+		set tabstop=2
+		set softtabstop=2
+		set shiftwidth=2
+		set expandtab
+		echo "Toggled to soft tabs with 2 spaces per column."
 	else
 		set tabstop=8
 		set softtabstop=8
@@ -83,3 +85,25 @@ nnoremap <F2> <Esc>:call ToggleTabs()<CR>
 " Use templates
 
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
+
+" Vundle
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'groenewege/vim-less'
+Bundle 'closetag.vim'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'programble/ooc.vim'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'groenewege/vim-less'
+
+" enable ooc syntax highlighting
+au BufNewFile,BufRead *.ooc set filetype=ooc
+
+" enable markdown syntax highlighting
+au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
+
+" enable less syntax highlighting
+au BufNewFile,BufRead *.less set filetype=less

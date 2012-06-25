@@ -16,6 +16,12 @@ done
 cp rc $HOMEDIR/.vimrc
 cd ..
 
+if [ ! -f $VIMDIR/bundle/vundle ]
+then
+	git clone https://github.com/gmarik/vundle.git $VIMDIR/bundle/vundle
+	vim "+BundleInstall" "+qall"
+fi
+
 # Apply only the differences.
 
 copydiff(){
