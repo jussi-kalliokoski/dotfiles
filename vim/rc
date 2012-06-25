@@ -25,16 +25,9 @@ nnoremap <F4> <Esc>:write<CR>:make<CR>:cw<CR>
 " Colors are nice!
 colorscheme desert
 
-if has("gui_running")
-	" Toolbars are useless
-	set guioptions	-=T
-	" Nice, if available!
-	colorscheme carvedwoodcooler
-endif
-
 " Also, what to do with the colours if there's no syntax hilighting
 filetype plugin	on
-filetype plugin indent on
+" filetype plugin indent on
 filetype on
 syntax enable
 " Since we have colours, why not hilite.
@@ -98,6 +91,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'programble/ooc.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'groenewege/vim-less'
+Bundle 'kchmck/vim-coffee-script'
 
 " enable ooc syntax highlighting
 au BufNewFile,BufRead *.ooc set filetype=ooc
@@ -107,3 +101,6 @@ au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
 " enable less syntax highlighting
 au BufNewFile,BufRead *.less set filetype=less
+
+" enable coffeescript syntax highlighting
+au BufNewFile,BufRead *.less set filetype=coffee
