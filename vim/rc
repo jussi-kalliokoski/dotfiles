@@ -22,6 +22,8 @@ nnoremap <F5> <Esc>:write<CR>
 " Compile and quickfix
 nnoremap <F4> <Esc>:write<CR>:make<CR>:cw<CR>
 
+imap <C-F> function 
+
 " Colors are nice!
 colorscheme desert
 
@@ -92,6 +94,7 @@ Bundle 'programble/ooc.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'groenewege/vim-less'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'mbbill/VimExplorer'
 
 " enable ooc syntax highlighting
 au BufNewFile,BufRead *.ooc set filetype=ooc
@@ -104,3 +107,10 @@ au BufNewFile,BufRead *.less set filetype=less
 
 " enable coffeescript syntax highlighting
 au BufNewFile,BufRead *.coffee set filetype=coffee
+
+" enable handlebars syntax highlighting
+au BufNewFile,BufRead *.handlebars set filetype=html
+
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
+set list listchars=tab:→\ ,trail:·

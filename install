@@ -2,40 +2,42 @@
 
 HOMEDIR=~
 
+# cp with prompt if enabled
+copy(){
+	cp -i $1 $2
+}
+
 # VIM settings
 if ["$VIMDIR" == ""]; then
 	VIMDIR=$HOMEDIR/.vim
 fi
 cd vim
 for f in */; do
-	mkdir $VIMDIR/$f -p
+	mkdir -p $VIMDIR/$f
 done
 for f in */*.vim; do
 	cp $f $VIMDIR/$f
 done
-cp rc $HOMEDIR/.vimrc
+copy rc $HOMEDIR/.vimrc
 cd ..
 
-if [ ! -f $VIMDIR/bundle/vundle ]
-then
+if [ ! -f $VIMDIR/bundle/vundle ]; then
 	git clone https://github.com/gmarik/vundle.git $VIMDIR/bundle/vundle
 	vim "+BundleInstall" "+qall"
 fi
 
-# Apply only the differences.
-
-copydiff(){
-	if [ -s $2 ]; then
-		git diff $1 $2 | awk '{if(match($0,"^ "))print $0}' >> $2
-	else
-		cp $1 $2
-	fi
-}
-
 # Shell settings
-copydiff shell/inputrc $HOMEDIR/.inputrc
-copydiff ssh/config $HOMEDIR/.ssh/config
+cp shell/inputrc $HOMEDIR/.inputrc
+copy ssh/config $HOMEDIR/.ssh/config
 
 mkdir -p $HOMEDIR/.config/xcolors
 cp urxvt/thayer $HOMEDIR/.config/xcolors
 cp urxvt/xdefaults $HOMEDIR/.Xdefaults
+
+# Small zsh tweak
+if [ -f $HOMEDIR/.zshrc ]; then
+	hasThatLine=`cat $HOMEDIR/.zshrc | grep "unsetopt correct_all"`
+	if [ ! -n "$hasThatLine" ]; then
+		echo "unsetopt correct_all" >> $HOMEDIR/.zshrc
+	fi
+fi
