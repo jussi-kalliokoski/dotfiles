@@ -35,7 +35,7 @@ export LESS="-EQRX"
 export EDITOR="vim"
 
 # Set up the prompt
-export PS1="[\e[0;32m\u \e[0;34m\h\e[00m] - [\e[0;37m\w\e[00m] - [\e[0;33m\D{%Y/%m/%d %H:%M} :: \$(battery_level)\e[00m]\n[\e[\[\033[1;35m\$\e[00m] <\$(git_prompt_info)>\e[00m "
+export PS1="\e[1;34m[\e[1;32m\u\e[00m\e[1;30m@\e[0;36m\h\e[1;34m]\e[00m - \e[1;34m[\e[1;37m\w\e[1;34m]\e[00m - \e[1;34m[\e[0;33m\D{%Y/%m/%d %H:%M} :: \$(battery_level)\e[1;34m]\n[\e[1;35m\$\e[1;34m] <\$(git_prompt_info)>\e[00m "
 
 # Enable colors in ls
 alias ls="ls -G"
