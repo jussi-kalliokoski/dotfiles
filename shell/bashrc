@@ -1,6 +1,9 @@
 # If not in interactive mode, bail.
 [[ $- != *i* ]] && return
 
+# UTF-8, otherwise iTerm2 and vim will act up on unicode characters.
+export LANG="en_US.UTF-8"
+
 # Returns "*" if the branch is dirty, or empty if clean
 git_is_dirty(){
 	[[ $(git status 2>/dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"

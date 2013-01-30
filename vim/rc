@@ -13,16 +13,14 @@ set grepprg=grep\ -nH\ $*
 " Ctrl h and l for scrolling tabs \o/
 nnoremap <C-L> <Esc>:tabnext<CR>
 nnoremap <C-H> <Esc>:tabprevious<CR>
-" I never use TagStack anyway, so Ctrl+t for new tab
-nnoremap <C-T> <Esc>:tabnew<CR>:open 
-" Space is nice for toggling folds, yes?
-nnoremap <space> za
-" Ever played some computer games?
-nnoremap <F5> <Esc>:write<CR>
-" Compile and quickfix
-nnoremap <F4> <Esc>:write<CR>:make<CR>:cw<CR>
-
-imap <C-F> function 
+" Space -> page down, I wish I knew how to map shift-space
+nnoremap <space> <C-b>
+" Clipboard
+nnoremap <C-P> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+nnoremap <C-Y> <Esc>:.w !pbcopy<CR><CR>
+xnoremap <C-Y> <Esc>:'<,'>:w !pbcopy<CR>
+" Control-t for toggling between tab modes
+nnoremap <C-T> <Esc>:call ToggleTabs()<CR>
 
 " Colors are nice!
 colorscheme desert
@@ -75,7 +73,6 @@ function! ToggleTabs()
 	endif
 endfunction
 
-nnoremap <F2> <Esc>:call ToggleTabs()<CR>
 
 " Use templates
 
@@ -114,3 +111,7 @@ au BufNewFile,BufRead *.handlebars set filetype=html
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 set list listchars=tab:→\ ,trail:·
+
+set smartindent
+
+set ruler
