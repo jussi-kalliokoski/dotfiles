@@ -119,6 +119,8 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'fish.vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'mozfr/mozilla.vim'
+Bundle 'helino/vim-json'
+Bundle 'jussi-kalliokoski/harmony.vim'
 " Bundle 'teramako/jscomplete-vim'
 
 " enable ooc syntax highlighting
@@ -138,6 +140,8 @@ au BufNewFile,BufRead *.handlebars set filetype=html
 
 " enable fish syntax highlighting
 au BufNewFile,BufRead *.fish set filetype=fish
+" enable json syntax highlighting
+au BufNewFile,BufRead *.json set filetype=json
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -152,6 +156,11 @@ set smartindent
 
 set ruler
 set backspace=2
+
+" Enable JS syntax extras
+let g:javascript_warning_trailing_semicolon = 1
+let g:javascript_warning_trailing_space = 1
+let g:javascript_enable_camelcase_classes = 1
 
 " Enable automatic completion
 let g:neocomplcache_enable_at_startup = 1
