@@ -8,6 +8,9 @@ set showcmd
 " Yes for REGCPY! \o/ Try "+yy and in another document window press p (paste).
 " let g:clipBrdDefault='+'
 
+" Vundle might break without this
+set shell=/bin/bash
+
 set grepprg=grep\ -nH\ $*
 
 " Ctrl h and l for scrolling tabs \o/
@@ -21,12 +24,21 @@ nnoremap <C-Y> <Esc>:.w !pbcopy<CR><CR>
 xnoremap <C-Y> <Esc>:'<,'>:w !pbcopy<CR>
 " Control-t for toggling between tab modes
 nnoremap <C-T> <Esc>:call ToggleTabs()<CR>
+" Automatically complete comments, brackets and function definitions
+inoremap /* /**/<Left><Left>
+inoremap /*<Space> /*<Space><Space>*/<Left><Left><Left>
+inoremap /*<CR> /*<CR>*/<Esc>O
+inoremap <Leader>/* /*
+inoremap {<CR> {<CR><Backspace>}<Esc>O
+autocmd FileType javascript inoremap fn( function<Space>(
+" Ctrl-] for toggling the mouse.
+nnoremap <C-]> <Esc>:call ToggleMouse()<CR>
 
 " Colors are nice!
 colorscheme desert
 
 " Also, what to do with the colours if there's no syntax hilighting
-filetype plugin	on
+filetype plugin on
 " filetype plugin indent on
 filetype on
 syntax enable
@@ -46,6 +58,15 @@ set number
 " Mouse is not so nice when you're on a laptop (oops my sleeve touched the
 " touchpad), set to 'a' when you need it.
 set mouse=
+
+" It can be nice for scrolling though.
+function! ToggleMouse()
+	if &mouse == "nicr"
+		set mouse=
+	else
+		set mouse=nicr
+	endif
+endfunction
 
 " Disable automatic comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -82,8 +103,9 @@ autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
 Bundle 'gmarik/vundle'
+
+" Extra bundles
 Bundle 'groenewege/vim-less'
 Bundle 'closetag.vim'
 Bundle 'plasticboy/vim-markdown'
@@ -91,7 +113,10 @@ Bundle 'programble/ooc.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'groenewege/vim-less'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'mbbill/VimExplorer'
+Bundle 'fish.vim'
+Bundle 'Shougo/neocomplcache'
+Bundle 'mozfr/mozilla.vim'
+" Bundle 'teramako/jscomplete-vim'
 
 " enable ooc syntax highlighting
 au BufNewFile,BufRead *.ooc set filetype=ooc
@@ -100,7 +125,7 @@ au BufNewFile,BufRead *.ooc set filetype=ooc
 au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
 " enable less syntax highlighting
-au BufNewFile,BufRead *.less set filetype=less
+au BufNewFile,BufRead *.{less,css} set filetype=less
 
 " enable coffeescript syntax highlighting
 au BufNewFile,BufRead *.coffee set filetype=coffee
@@ -108,10 +133,26 @@ au BufNewFile,BufRead *.coffee set filetype=coffee
 " enable handlebars syntax highlighting
 au BufNewFile,BufRead *.handlebars set filetype=html
 
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" enable fish syntax highlighting
+au BufNewFile,BufRead *.fish set filetype=fish
 
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" set list listchars=tab:^\ ,trail:@
 set list listchars=tab:→\ ,trail:·
 
 set smartindent
 
 set ruler
+set backspace=2
+
+" Enable automatic completion
+let g:neocomplcache_enable_at_startup = 1
+" Tab completion
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" Disable case ignoring
+let g:neocomplcache_enable_ignore_case = 0
