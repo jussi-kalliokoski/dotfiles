@@ -28,7 +28,7 @@ nnoremap <C-T> <Esc>:call ToggleTabs()<CR>
 inoremap /* /**/<Left><Left>
 inoremap /*<Space> /*<Space><Space>*/<Left><Left><Left>
 inoremap /*<CR> /*<CR>*/<Esc>O
-inoremap /**<CR> /**<CR>*/<Esc>O *
+inoremap /**<CR> /**<CR>*/<Esc>O * 
 inoremap <Leader>/* /*
 inoremap {<CR> {<CR><Backspace>}<Esc>O
 autocmd FileType javascript inoremap fn( function<Space>(
