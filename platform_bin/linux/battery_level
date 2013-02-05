@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+BATTERY__LEVEL="-1%"
+# check if we have acpi
+command -v acpi >/dev/null 2>&1
+if [[ $? -ne 0 ]]; then
+	# Well, there isn't much to do if we don't.
+else
+	BATTERY__LEVEL=$(acpi -b 2>/dev/null | tail -n1 | grep --color=never -o "[0-9][0-9]*%")
+fi
+echo $BATTERY__LEVEL

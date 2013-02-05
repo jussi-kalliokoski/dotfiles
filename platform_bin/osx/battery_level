@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# try the getting the battery state from ioreg on OS X
+ioreg -n AppleSmartBattery -r 2>/dev/null | awk '$1~/Capacity/{c[$1]=$3} END{OFMT="%.2f%%"; max=c["\"MaxCapacity\""]; print (max>0? 100*c["\"CurrentCapacity\""]/max: "?")}'
