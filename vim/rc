@@ -158,8 +158,10 @@ set ruler
 set backspace=2
 
 " Enable JS syntax extras
-let g:javascript_warning_trailing_semicolon = 1
 let g:javascript_warning_trailing_space = 1
+let g:javascript_warning_trailing_semicolon = 1
+let g:javascript_warning_leading_semicolon = 1
+let g:javascript_warning_leading_opening_parens = 1
 let g:javascript_enable_camelcase_classes = 1
 
 " Enable automatic completion
