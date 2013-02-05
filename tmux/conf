@@ -1,0 +1,3 @@
+set -g status-right '#(whoami) @ #(hostname -s) [#(/usr/local/bin/battery_level)] %H:%M'
+set -g default-terminal "screen-256color"
+set-option -g status-right-length 90
