@@ -28,6 +28,7 @@ nnoremap <C-T> <Esc>:call ToggleTabs()<CR>
 inoremap /* /**/<Left><Left>
 inoremap /*<Space> /*<Space><Space>*/<Left><Left><Left>
 inoremap /*<CR> /*<CR>*/<Esc>O
+inoremap /**<CR> /**<CR>*/<Esc>O *
 inoremap <Leader>/* /*
 inoremap {<CR> {<CR><Backspace>}<Esc>O
 autocmd FileType javascript inoremap fn( function<Space>(
@@ -63,8 +64,10 @@ set mouse=
 function! ToggleMouse()
 	if &mouse == "nicr"
 		set mouse=
+		echo "Mouse disabled"
 	else
 		set mouse=nicr
+		echo "Mouse enabled"
 	endif
 endfunction
 
