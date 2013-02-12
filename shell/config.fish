@@ -11,9 +11,10 @@ function git_info
 end
 
 function git_branch
-	git branch --color=never ^&- | awk '/\*/ {print $2}'
+	git branch --color=never ^&- | grep '^\* ' | sed 's/^* //'
 end
 
+# Simplified: [DIRECTORY] - [USERMODE] - <GITSTATUS>
 function fish_prompt
 	set_color --bold blue
 	echo -n '['
@@ -32,4 +33,17 @@ function fish_prompt
 	set_color normal
 end
 
-set PATH ~/.rvm/bin /usr/local/share/npm/bin /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
+# Load aliases and other functions
+. ~/.config/fish/functions.fish
+
+# Set basic path
+set PATH /sbin /usr/sbin /bin /usr/bin
+
+# More paths
+set PATH /usr/local/sbin $PATH
+set PATH /usr/local/bin $PATH
+set PATH /usr/local/share/npm/bin $PATH
+set PATH ~/.rvm/bin $PATH
+
+# Include machine-specific extras, if any
+if test -f ~/.config/fish/extras.fish; . ~/.config/fish/extras.fish; end
