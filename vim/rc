@@ -25,13 +25,7 @@ xnoremap <C-Y> <Esc>:'<,'>:w !pbcopy<CR>
 " Control-t for toggling between tab modes
 nnoremap <C-T> <Esc>:call ToggleTabs()<CR>
 " Automatically complete comments, brackets and function definitions
-inoremap /* /**/<Left><Left>
-inoremap /*<Space> /*<Space><Space>*/<Left><Left><Left>
-inoremap /*<CR> /*<CR>*/<Esc>O
 inoremap /**<CR> /**<CR>*/<Esc>O * 
-inoremap <Leader>/* /*
-inoremap {<CR> {<CR><Backspace>}<Esc>O
-autocmd FileType javascript inoremap fn( function<Space>(
 " Ctrl-] for toggling the mouse.
 nnoremap <C-]> <Esc>:call ToggleMouse()<CR>
 
@@ -160,6 +154,7 @@ set backspace=2
 " Enable JS syntax extras
 let g:javascript_warning_all = 1
 let g:javascript_enable_camelcase_classes = 1
+let g:javascript_enable_caps_constants = 1
 
 " Enable automatic completion
 let g:neocomplcache_enable_at_startup = 1
