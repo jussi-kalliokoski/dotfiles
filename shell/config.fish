@@ -31,6 +31,8 @@ function fish_prompt
 	set_color --bold blue
 	echo -n '> '
 	set_color normal
+	# Tell TMUX the CWD
+	# if set -q TMUX; tmux setenv TMUXPWD_(tmux display -p "#D" | tr -d %) "$PWD"; end
 end
 
 # Load aliases and other functions
