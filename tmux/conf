@@ -1,5 +1,5 @@
 set -g status-utf8 on
-set -g status-left '#[fg=colour234, bg=colour148] #(hostname -s) #[fg=colour255, bg=colour30] ⓛ  #(/usr/local/bin/lan_ip) #[fg=colour0, bg=colour33] #(whoami) #[fg=colour0, bg=colour33] #(echo $TMUX_CWD) '
+set -g status-left '#[fg=colour234, bg=colour148] #(hostname -s) #[fg=colour255, bg=colour30] #(/usr/local/bin/lan_ip) #[fg=colour0, bg=colour33] #(whoami) #[fg=colour0, bg=colour148] #S '
 set -g status-right '#[fg=colour0, bg=colour255] ♥ #(/usr/local/bin/battery_level) #[fg=colour148, bg=colour0] %H:%M '
 set -g status-bg colour0
 set -g default-terminal "screen-256color"
