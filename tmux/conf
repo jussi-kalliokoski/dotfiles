@@ -3,6 +3,6 @@ set -g status-left '#[fg=colour234, bg=colour148] #(hostname -s) #[fg=colour255,
 set -g status-right '#[fg=colour0, bg=colour255] ♥ #(/usr/local/bin/battery_level) #[fg=colour148, bg=colour0] %H:%M '
 set -g status-bg colour0
 set -g default-terminal "screen-256color"
-set-option -g status-left-length 50
+set-option -g status-left-length 80
 set-option -g status-right-length 50
 set-window-option -g window-status-current-format "#[fg=colour255, bg=colour27] #I: #W #[fg=colour27, bg=colour235]"
