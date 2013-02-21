@@ -14,20 +14,22 @@ set shell=/bin/bash
 set grepprg=grep\ -nH\ $*
 
 " Ctrl h and l for scrolling tabs \o/
-nnoremap <C-L> <Esc>:tabnext<CR>
-nnoremap <C-H> <Esc>:tabprevious<CR>
-" Space -> page down, I wish I knew how to map shift-space
-nnoremap <space> <C-b>
+nmap <C-L> <Esc>:tabnext<CR>
+nmap <C-H> <Esc>:tabprevious<CR>
+" Space motion
+nmap <Space> <C-d>
+nmap <s-Space> <C-u>
 " Clipboard
-nnoremap <C-P> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-nnoremap <C-Y> <Esc>:.w !pbcopy<CR><CR>
-xnoremap <C-Y> <Esc>:'<,'>:w !pbcopy<CR>
+nmap <C-P> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+nmap <C-Y> <Esc>:.w !pbcopy<CR><CR>
+xmap <C-Y> <Esc>:'<,'>:w !pbcopy<CR>
 " Control-t for toggling between tab modes
-nnoremap <C-T> <Esc>:call ToggleTabs()<CR>
+nmap <C-T> <Esc>:call ToggleTabs()<CR>
 " Automatically complete comments, brackets and function definitions
-inoremap /**<CR> /**<CR>*/<Esc>O * 
+imap <C-p> /**<CR>*/<Esc>O * 
 " Ctrl-] for toggling the mouse.
-nnoremap <C-]> <Esc>:call ToggleMouse()<CR>
+nmap <C-]> <Esc>:call ToggleMouse()<CR>
+nmap <C-w>m <Esc>:call SwapWindow()<CR>
 
 " Colors are nice!
 colorscheme desert
@@ -53,6 +55,31 @@ set number
 " Mouse is not so nice when you're on a laptop (oops my sleeve touched the
 " touchpad), set to 'a' when you need it.
 set mouse=
+
+" A utility for swapping places of buffers.
+function! SwapWindow()
+	if exists("g:markedWinNum")
+		" Mark destination
+		let curNum = winnr()
+		let curBuf = bufnr( "%" )
+		exe g:markedWinNum . "wincmd w"
+		" Switch to source and shuffle dest->source
+		let markedBuf = bufnr( "%" )
+		" Hide and open so that we aren't prompted and keep history
+		exe 'hide buf' curBuf
+		" Switch to dest and shuffle source->dest
+		exe curNum . "wincmd w"
+		" Hide and open so that we aren't prompted and keep history
+		exe 'hide buf' markedBuf 
+		" Unmark
+		unlet g:markedWinNum
+		echo "Swapped buffers!"
+	else
+		" Mark source
+		let g:markedWinNum = winnr()
+		echo "Marked buffer for swapping."
+	endif
+endfunction
 
 " It can be nice for scrolling though.
 function! ToggleMouse()
@@ -159,6 +186,6 @@ let g:javascript_enable_caps_constants = 1
 " Enable automatic completion
 let g:neocomplcache_enable_at_startup = 1
 " Tab completion
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " Disable case ignoring
-let g:neocomplcache_enable_ignore_case = 0
+let g:neocomplcache_enable_ig_case = 0
