@@ -29,3 +29,7 @@ end
 function gs
 	git status $argv
 end
+
+function git-sed
+	sed $argv (git ls-tree -r master | awk "{print \$4}")
+end
