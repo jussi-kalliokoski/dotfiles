@@ -14,10 +14,6 @@ function tls
 	tmux ls
 end
 
-function top
-	top -o cpu $argv
-end
-
 function gg
 	git grep $argv
 end
