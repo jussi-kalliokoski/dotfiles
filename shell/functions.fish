@@ -30,6 +30,10 @@ function gs
 	git status $argv
 end
 
+function gw
+	git whatchanged $argv
+end
+
 # Lists all files in the git tree
 function git-files
 	git ls-tree -r master | awk "{print \$4}"
