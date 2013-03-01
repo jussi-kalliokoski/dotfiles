@@ -39,15 +39,6 @@ filetype plugin on
 " filetype plugin indent on
 filetype on
 syntax enable
-" Since we have colours, why not hilite.
-" set hlsearch
-" nevermind, highlighting sucks
-
-" Pro tabs, hard, not expanded.
-set tabstop=8
-set softtabstop=8
-set shiftwidth=8
-set noexpandtab
 
 " Line numbering
 set number
@@ -70,7 +61,7 @@ function! SwapWindow()
 		" Switch to dest and shuffle source->dest
 		exe curNum . "wincmd w"
 		" Hide and open so that we aren't prompted and keep history
-		exe 'hide buf' markedBuf 
+		exe 'hide buf' markedBuf
 		" Unmark
 		unlet g:markedWinNum
 		echo "Swapped buffers!"
@@ -92,32 +83,32 @@ function! ToggleMouse()
 	endif
 endfunction
 
-" Disable automatic comments
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+function! SetIndent(num_spaces)
+	if a:num_spaces == 8
+		setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+	elseif a:num_spaces == 4
+		setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+	else
+		setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+	endif
 
-" Toggle between 4 spaces soft tabs and 8 spaces hard tabs with F2
+endfunction
+
 function! ToggleTabs()
 	if &tabstop == 8
-		set tabstop=4
-		set softtabstop=4
-		set shiftwidth=4
-		set expandtab
+		call SetIndent(4)
 		echo "Toggled to soft tabs with 4 spaces per column."
 	elseif &tabstop == 4
-		set tabstop=2
-		set softtabstop=2
-		set shiftwidth=2
-		set expandtab
+		call SetIndent(2)
 		echo "Toggled to soft tabs with 2 spaces per column."
 	else
-		set tabstop=8
-		set softtabstop=8
-		set shiftwidth=8
-		set noexpandtab
+		call SetIndent(8)
 		echo "Toggled to hard tabs with 8 spaces per column."
 	endif
 endfunction
 
+" Disable automatic comments
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Use templates
 
@@ -142,7 +133,7 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'mozfr/mozilla.vim'
 Bundle 'helino/vim-json'
 Bundle 'jussi-kalliokoski/harmony.vim'
-" Bundle 'teramako/jscomplete-vim'
+Bundle 'ciaranm/detectindent'
 
 " enable ooc syntax highlighting
 au BufNewFile,BufRead *.ooc set filetype=ooc
@@ -169,6 +160,18 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+autocmd BufReadPost * :DetectIndent
+
+let g:detectindent_preferred_expandtab = 1
+let g:detectindent_preferred_indent = 4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+autocmd FileType coffee :call SetIndent(2)
+autocmd FileType json :call SetIndent(2)
 
 " set list listchars=tab:^\ ,trail:@
 set list listchars=tab:→\ ,trail:·
