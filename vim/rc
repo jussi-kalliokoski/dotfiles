@@ -164,7 +164,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd BufReadPost * :DetectIndent
 
 let g:detectindent_preferred_expandtab = 1
-let g:detectindent_preferred_indent = 4
+let g:detectindent_preferred_indent = 8
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
