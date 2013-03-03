@@ -34,19 +34,14 @@ function gw
 	git whatchanged $argv
 end
 
-# Lists all files in the git tree
-function git-files
-	git ls-tree -r master | awk "{print \$4}"
-end
-
 # Performs a sed operation for all files in the git tree
 function git-sed
-	sed $argv (git-files)
+	sed $argv (git ls-files)
 end
 
 # Prints the ID of commit n, where n=1 is the latest commit
 function git-cid
-	git log --color=never -n $argv[1] | grep "^commit" | awk "{ print \$2 }" | tail -n 1
+	git log --pretty="%H" | tail -n 1
 end
 
 # Compares (diff) two commits.
