@@ -41,7 +41,7 @@ end
 
 # Prints the ID of commit n, where n=1 is the latest commit
 function git-cid
-	git log --pretty="%H" | tail -n 1
+	git log --pretty="%H" | head -n $argv[1] | tail -n 1
 end
 
 # Compares (diff) two commits.
