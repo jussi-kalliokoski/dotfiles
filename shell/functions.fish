@@ -34,17 +34,21 @@ function gw
 	git whatchanged $argv
 end
 
+function gls
+	git ls-files $argv
+end
+
 # Performs a sed operation for all files in the git tree
 function git-sed
-	sed $argv (git ls-files)
+	sed $argv (gls)
 end
 
 # Prints the ID of commit n, where n=1 is the latest commit
 function git-cid
-	git log --pretty="%H" | head -n $argv[1] | tail -n 1
+	git log --pretty="%H" -n $argv[1] | tail -n 1
 end
 
 # Compares (diff) two commits.
 function git-cc
-	git diff (git-cid $argv[1])..(git-cid $argv[2])
+	git diff (git-cid $argv[2])..(git-cid $argv[1])
 end
