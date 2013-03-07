@@ -30,6 +30,7 @@ imap <C-p> /**<CR>*/<Esc>O *
 " Ctrl-] for toggling the mouse.
 nmap <C-]> <Esc>:call ToggleMouse()<CR>
 nmap <C-w>m <Esc>:call SwapWindow()<CR>
+nmap d<space> <Esc>:%s/\s\+$//<CR>
 
 " Colors are nice!
 colorscheme desert
