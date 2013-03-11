@@ -6,27 +6,21 @@ Xft.hintstyle:  hintfull
 
 URxvt.title: Terminal
 URxvt.font: xft:DejaVu Sans Mono-12
-!URxvt.font: -*-tamsyn-medium-*-normal-*-17-*-*-*-*-*-iso8859-1
-!URxvt.boldFont: xft:DejaVu Sans Mono-10
 URxvt.scrollBar: false
 URxvt.urgentOnBell: True
 
-URxvt.perl-ext-common: default,selection,url-select,clipboard
-URxvt.keysym.M-u:      perl:url-select:select_next
-URxvt.underlineURLs: true
+URxvt.perl-ext-common: default,keyboard-select,url-select,clipboard,fullscreen
+UTxvt.url-select.launcher: /usr/local/bin/open
+URxvt.url-select.underline: true
+URxvt.clipboard-autocopy: true
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.perl-lib: /home/jussi/.urxvt/
-URxvt.urlLauncher: firefox
 URxvt.termName: rxvt-256color
 
-
-!URxvt.internalBorder: 4
 URxvt.cursorBlink: false
-
+URxvt.keysym.F11: perl:fullscreen:switch
 
 ! terminal colors
-! ------------------------------------------------------------
 
 #include "/home/jussi/.config/xcolors/thayer"
-!#include "/home/jussi/.config/xcolors/solarized"
-
-
