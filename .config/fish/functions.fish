@@ -27,7 +27,8 @@ function dotfiles_sync
 	if not git diff --quiet HEAD ^&-
 		echo "You have uncommitted changes to your dotfiles."
 		if prompt "Would you like to commit them in?"; and git commit -a
-			git pull -u --rebase origin master
+
+			git pull --rebase -u origin master
 			git push -u origin master
 			return 0
 		else
