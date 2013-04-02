@@ -30,6 +30,7 @@ function dotfiles_sync
 
 			git pull --rebase -u origin master
 			git push -u origin master
+			cd $old_pwd
 			return 0
 		else
 			echo "Please commit your local changes before sync."
