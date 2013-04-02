@@ -1,36 +1,33 @@
 #!/usr/bin/env sh
 
-OS=`lowercase \`uname\``
+OS=`uname`
 if [ "${OS}" == "darwin" ]; then
     OS="osx"
 else
     OS="linux"
 fi
 
-if [ ! -f ~/.dotfiles ]; then
+if [ ! -d ~/.dotfiles ]; then
     git clone --recursive https://github.com/jussi-kalliokoski/dotfiles ~/.dotfiles
 fi
 
 OLD_PWD=`pwd`
 cd ~/.dotfiles
 
-if [ "$PREFIX" == "" ]
+if [ "$PREFIX" == "" ]; then
     PREFIX="/usr/local/bin"
 fi
 
 # link, confirm if directory
 link(){
     ln -s $1 $2
-    if [ -d $1 ]; then
-        ln -ld $2
-    fi
 }
 
 # link, prompt if needs to overwrite
 link_prompt(){
     if [ -L $2 ]; then
         echo "WARN: $2 is already linked, ignoring."
-    elif [ -f $2 ]; then
+    elif [ -f $2 ] || [ -d $2 ]; then
         echo "ERROR: $2 already exists. Do you wish to overwrite?"
         select yn in "Yes" "No"; do
             case $yn in
@@ -45,7 +42,7 @@ link_prompt(){
 
 add(){
     for p in "$@"; do
-        link_prompt $p ~/$p
+        link_prompt ~/.dotfiles/$p ~/$p
     done
 }
 
@@ -58,10 +55,10 @@ add .config/fish/*.fish
 add .config/xcolors/thayer
 
 for executable in platform_bin/$OS/*; do
-    link_prompt $executable $PREFIX/${executable##*/}
+    link_prompt ~/.dotfiles/$executable $PREFIX/${executable##*/}
 done
 for executable in platform_bin/all/*; do
-    link_prompt $executable $PREFIX/${executable##*/}
+    link_prompt ~/.dotfiles/$executable $PREFIX/${executable##*/}
 done
 
 cd $OLD_PWD
