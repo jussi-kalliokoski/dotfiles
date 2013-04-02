@@ -2,6 +2,44 @@ function fish_reload
 	. ~/.config/fish/config.fish
 end
 
+function prompt
+	echo $argv "(y\N)"
+	read -p "" answer
+	if test $answer = "y"
+		return 0
+	end
+	return 1
+end
+
+function dotfiles_sync
+	set old_pwd (pwd)
+	cd ~/.dotfiles
+
+	git remote rm origin
+	git remote add origin git@github.com:jussi-kalliokoski/dotfiles.git
+
+	if contains force $argv
+		git reset --hard origin/master
+		cd $old_pwd
+		return 0
+	end
+
+	if not git diff --quiet HEAD ^&-
+		echo "You have uncommitted changes to your dotfiles."
+		if prompt "Would you like to commit them in?"; and git commit -a
+			git pull -u --rebase origin master
+			git push -u origin master
+			return 0
+		else
+			echo "Please commit your local changes before sync."
+			cd $old_pwd
+			return 1
+		end
+	end
+	git pull
+	cd $old_pwd
+end
+
 function tn
 	tmux new-session -s $argv
 end
