@@ -15,7 +15,7 @@ OLD_PWD=`pwd`
 cd ~/.dotfiles
 
 if [ "$PREFIX" == "" ]; then
-    PREFIX="/usr/local/bin"
+    PREFIX="/usr/local"
 fi
 
 # link, confirm if directory
@@ -55,10 +55,10 @@ add .config/fish/*.fish
 add .config/xcolors/thayer
 
 for executable in platform_bin/$OS/*; do
-    link_prompt ~/.dotfiles/$executable $PREFIX/${executable##*/}
+    link_prompt ~/.dotfiles/$executable $PREFIX/bin/${executable##*/}
 done
 for executable in platform_bin/all/*; do
-    link_prompt ~/.dotfiles/$executable $PREFIX/${executable##*/}
+    link_prompt ~/.dotfiles/$executable $PREFIX/bin/${executable##*/}
 done
 
 cd $OLD_PWD
