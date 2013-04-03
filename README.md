@@ -10,8 +10,10 @@ First, make sure that the current user has rights to ``` $PREFIX/bin ``` (usuall
 # chown -R `whoami` /usr/local/bin
 ```
 
+Then, install:
+
 ```sh
-$ curl https://raw.github.com/jussi-kalliokoski/dotfiles/master/install.sh | sh
+$ curl https://raw.github.com/jussi-kalliokoski/dotfiles/master/install.sh | bash
 ```
 
 ## Disclaimer
