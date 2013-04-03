@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 OS=`uname`
-if [ "${OS}" == "darwin" ]; then
+if [ "${OS}" == "Darwin" ]; then
     OS="osx"
 else
     OS="linux"
