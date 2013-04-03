@@ -38,7 +38,7 @@ function dotfiles_sync
 			return 1
 		end
 	end
-	git pull
+	git pull -u origin master
 	cd $old_pwd
 end
 
