@@ -1,14 +1,11 @@
 " To see what these things do, use :help, for instance :help nocompatible
 
-" If this stuff ends up in something else than .vimrc
 " Cool VIM stuff, probably on already
 set nocompatible
 " This is nice, and also probably on already.
 set showcmd
-" Yes for REGCPY! \o/ Try "+yy and in another document window press p (paste).
-" let g:clipBrdDefault='+'
 
-" Vundle might break without this
+" 3rd party stuff might break without this
 set shell=/bin/bash
 
 set grepprg=grep\ -nH\ $*
@@ -134,8 +131,8 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'mozfr/mozilla.vim'
 Bundle 'helino/vim-json'
 Bundle 'jussi-kalliokoski/harmony.vim'
-Bundle 'ciaranm/detectindent'
 Bundle 'peterhoeg/vim-qml'
+Bundle 'walm/jshint.vim'
 
 " enable ooc syntax highlighting
 au BufNewFile,BufRead *.ooc set filetype=ooc
@@ -156,7 +153,7 @@ au BufNewFile,BufRead *.handlebars set filetype=html
 au BufNewFile,BufRead *.fish set filetype=fish
 
 " enable json syntax highlighting
-au BufNewFile,BufRead *.json set filetype=json
+au BufNewFile,BufRead *.{json,jshintrc} set filetype=json
 
 " enable qml syntax highlighting
 au BufNewFile,BufRead *.qml set filetype=qml
@@ -167,23 +164,20 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-autocmd BufReadPost * :DetectIndent
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd BufWritePost,FileWritePost *.js JSHint
 
-let g:detectindent_preferred_expandtab = 1
-let g:detectindent_preferred_indent = 8
+autocmd FileType coffee :call SetIndent(2)
+autocmd FileType json :call SetIndent(2)
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-autocmd FileType coffee :call SetIndent(2)
-autocmd FileType json :call SetIndent(2)
-
-" set list listchars=tab:^\ ,trail:@
 set list listchars=tab:→\ ,trail:·
 
 set smartindent
-
 set ruler
 set backspace=2
 
