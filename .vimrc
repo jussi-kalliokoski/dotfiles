@@ -188,7 +188,7 @@ let g:javascript_enable_caps_constants = 1
 
 " Enable automatic completion
 let g:neocomplcache_enable_at_startup = 1
-" Tab completion
-imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " Disable case ignoring
 let g:neocomplcache_enable_ig_case = 0
+" Tab completion for neocomplcache
+imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
