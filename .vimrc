@@ -192,3 +192,9 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ig_case = 0
 " Tab completion for neocomplcache
 imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Make sure quickfix window closes along with the window it's associated with
+aug QFClose
+	au!
+	au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
