@@ -11,6 +11,12 @@ function prompt
 	return 1
 end
 
+function print_array
+    for item in $argv
+        echo $item
+    end
+end
+
 function dotfiles_sync
 	set old_pwd (pwd)
 	cd ~/.dotfiles
@@ -78,15 +84,19 @@ function gls
 	git ls-files $argv
 end
 
+function add-host
+	printf "%s\t%s" (host $argv[1] | awk "{print \$4}") $argv[1]
+end
+
 function git-pick-file -d "Cherry pick commits that have changes to specified files"
 	# store current branch
-	set branch (git_branch)
+	set -l branch (git_branch)
 	# checkout target branch
 	git checkout $argv[1]
 	# shift the argv array
 	set -e argv[1]
 	# store the list of commits containing changes to the specified files
-	set commits (git log --pretty="%H" --reverse -- $argv)
+	set -l commits (git log --pretty="%H" --reverse -- $argv)
 	# checkout back to the original branch
 	git checkout $branch
 	# cherry-pick each stored commit
@@ -99,10 +109,32 @@ function git-sed -d "Performs a sed operation for all files in the git tree"
 	sed $argv (gls)
 end
 
+function git-get-commits -d "Gets the hashes of commits in the log."
+	git log --pretty="%H" $argv
+end
+
+function git-get-commit-index -d "Gets the how many commits ago a commit in the log is."
+	set -l commits (git-get-commits)
+	set -l index 1
+	for commit in $commits
+		if echo $commit | ack $argv[1] > /dev/null
+			break
+		end
+		set index (math $index + 1)
+	end
+	echo $index
+end
+
 function git-cid -d "Print the ID of the commit n, where n=1 is the latest commit"
-	git log --pretty="%H" -n $argv[1] | tail -n 1
+	git-get-commits -n $argv[1] | tail -n 1
 end
 
 function git-cc -d "Compare (diff) two commits"
 	git diff (git-cid $argv[2])..(git-cid $argv[1])
+end
+
+function tunnel -d "Tunnel a local port to a remote port"
+    set -l local_port $argv[1]
+    set -l remote_port $argv[2]
+    ssh jussi@a -R $remote_port:(lan_ip):$local_port -N
 end
