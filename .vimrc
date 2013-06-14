@@ -29,9 +29,6 @@ nmap <C-]> <Esc>:call ToggleMouse()<CR>
 nmap <C-w>m <Esc>:call SwapWindow()<CR>
 nmap d<space> <Esc>:%s/\s\+$//<CR>
 
-" Colors are nice!
-colorscheme desert
-
 " Also, what to do with the colours if there's no syntax hilighting
 filetype plugin on
 " filetype plugin indent on
@@ -40,6 +37,9 @@ syntax enable
 
 " Line numbering
 set number
+
+" Highlight all search results
+set hlsearch
 
 " Mouse is not so nice when you're on a laptop (oops my sleeve touched the
 " touchpad), set to 'a' when you need it.
@@ -133,6 +133,9 @@ Bundle 'helino/vim-json'
 Bundle 'jussi-kalliokoski/harmony.vim'
 Bundle 'peterhoeg/vim-qml'
 Bundle 'walm/jshint.vim'
+Bundle 'jussi-kalliokoski/dessert.vim'
+
+colorscheme dessert
 
 " enable ooc syntax highlighting
 au BufNewFile,BufRead *.ooc set filetype=ooc
