@@ -138,3 +138,8 @@ function tunnel -d "Tunnel a local port to a remote port"
     set -l remote_port $argv[2]
     ssh jussi@a -R $remote_port:(lan_ip):$local_port -N
 end
+
+function row -d "Gets the Nth row of each line"
+    set -l n $argv[1]
+    awk "{ print \$$n }"
+end
