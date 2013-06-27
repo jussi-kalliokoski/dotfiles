@@ -24,6 +24,11 @@ xmap <C-Y> <Esc>:'<,'>:w !pbcopy<CR>
 nmap <C-T> <Esc>:call ToggleTabs()<CR>
 " Automatically complete comments, brackets and function definitions
 imap <C-p> /**<CR>*/<Esc>O * 
+" Context-aware variable rename for JS and see docs.
+nmap R <Esc>:TernRename<CR>
+nmap D <Esc>:TernDoc<CR>
+" Close preview window
+nmap ` <Esc>:pc<CR>
 " Ctrl-] for toggling the mouse.
 nmap <C-]> <Esc>:call ToggleMouse()<CR>
 nmap <C-w>m <Esc>:call SwapWindow()<CR>
@@ -127,6 +132,7 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'groenewege/vim-less'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'fish.vim'
+Bundle 'marijnh/tern_for_vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'mozfr/mozilla.vim'
 Bundle 'helino/vim-json'

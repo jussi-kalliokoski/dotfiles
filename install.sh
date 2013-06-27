@@ -61,6 +61,8 @@ for executable in platform_bin/all/*; do
     link_prompt ~/.dotfiles/$executable $PREFIX/bin/${executable##*/}
 done
 
-cd $OLD_PWD
-
 vim "+BundleInstall" "+qall"
+cd ~/.dotfiles/.vim/bundle/tern_for_vim
+npm install
+
+cd $OLD_PWD
