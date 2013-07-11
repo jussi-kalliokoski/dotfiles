@@ -65,4 +65,11 @@ vim "+BundleInstall" "+qall"
 cd ~/.dotfiles/.vim/bundle/tern_for_vim
 npm install
 
+# GNOME 3
+if command -v gsettings >/dev/null 2>&1; then
+    for config_file in ~/.dotfiles/.config/gnome3-extra/*.conf; do
+        gsettings-import.js $config_file
+    done
+fi
+
 cd $OLD_PWD
