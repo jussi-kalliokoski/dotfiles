@@ -47,6 +47,7 @@ add(){
 }
 
 add .vimrc .vim
+add .gitconfig .gitignore_global
 add .inputrc
 add .Xdefaults
 add .tmux.conf

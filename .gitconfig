@@ -1,0 +1,18 @@
+[user]
+	name = Jussi Kalliokoski
+	email = jussi.kalliokoski@gmail.com
+[push]
+	default = simple
+[alias]
+	diff = diff --color=always
+	d = difftool
+	standup = log --since yesterday --oneline --author jussi.kalliokoski
+	todo = grep -n -e TODO -e FIXME -e XXX -e OPTIMIZE -e HACK
+[color]
+	ui = true
+[core]
+	excludesfile = ~/.gitignore_global
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
