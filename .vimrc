@@ -140,6 +140,7 @@ Bundle 'jussi-kalliokoski/harmony.vim'
 Bundle 'peterhoeg/vim-qml'
 Bundle 'walm/jshint.vim'
 Bundle 'jussi-kalliokoski/dessert.vim'
+Bundle 'wavded/vim-stylus'
 
 colorscheme dessert
 
@@ -166,6 +167,9 @@ au BufNewFile,BufRead *.{json,jshintrc} set filetype=json
 
 " enable qml syntax highlighting
 au BufNewFile,BufRead *.qml set filetype=qml
+
+" enable qml syntax highlighting
+au BufNewFile,BufRead *.styl set filetype=stylus
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
