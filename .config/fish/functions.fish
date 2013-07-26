@@ -143,3 +143,8 @@ function row -d "Gets the Nth row of each line"
     set -l n $argv[1]
     awk "{ print \$$n }"
 end
+
+function rn -d "Renames a file"
+    set -l directory (dirname $argv[1])
+    mv $argv[1] $directory/$argv[2]
+end
