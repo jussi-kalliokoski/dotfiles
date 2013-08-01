@@ -12,10 +12,9 @@ URxvt.urgentOnBell: True
 URxvt.perl-ext-common: default,keyboard-select,url-select,clipboard,fullscreen
 UTxvt.url-select.launcher: /usr/local/bin/open
 URxvt.url-select.underline: true
-URxvt.clipboard-autocopy: true
+URxvt.clipboard.autocopy: true
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
-URxvt.perl-lib: /home/jussi/.urxvt/
 URxvt.termName: rxvt-256color
 
 URxvt.cursorBlink: false
