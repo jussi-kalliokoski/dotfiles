@@ -84,6 +84,10 @@ function gls
 	git ls-files $argv
 end
 
+function gfa
+	git fetch --all
+end
+
 function add-host
 	printf "%s\t%s" (host $argv[1] | awk "{print \$4}") $argv[1]
 end
