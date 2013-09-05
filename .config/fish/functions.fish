@@ -148,6 +148,12 @@ function row -d "Gets the Nth row of each line"
     awk "{ print \$$n }"
 end
 
+function nth -d "Gets the nth line of input"
+    set -l length 1
+    set -l first (math $argv[1] + $length)
+    head -n $first | tail -n $length
+end
+
 function rn -d "Renames a file"
     set -l directory (dirname $argv[1])
     mv $argv[1] $directory/$argv[2]
