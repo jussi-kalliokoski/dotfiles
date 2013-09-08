@@ -84,6 +84,14 @@ function gls
 	git ls-files $argv
 end
 
+function gfa
+	git fetch --all
+end
+
+function gpb
+    git push -u origin (git_branch)
+end
+
 function add-host
 	printf "%s\t%s" (host $argv[1] | awk "{print \$4}") $argv[1]
 end
@@ -142,6 +150,12 @@ end
 function row -d "Gets the Nth row of each line"
     set -l n $argv[1]
     awk "{ print \$$n }"
+end
+
+function nth -d "Gets the nth line of input"
+    set -l length 1
+    set -l first (math $argv[1] + $length)
+    head -n $first | tail -n $length
 end
 
 function rn -d "Renames a file"
