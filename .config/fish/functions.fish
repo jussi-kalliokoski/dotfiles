@@ -162,3 +162,23 @@ function rn -d "Renames a file"
     set -l directory (dirname $argv[1])
     mv $argv[1] $directory/$argv[2]
 end
+
+function GET
+    curl -iX GET $argv
+end
+
+function POST
+    curl -iX POST $argv
+end
+
+function DELETE
+    curl -iX DELETE $argv
+end
+
+function PUT
+    curl -iX PUT $argv
+end
+
+function PATCH
+    curl -iX PATCH $argv
+end
