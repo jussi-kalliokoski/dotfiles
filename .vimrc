@@ -141,6 +141,8 @@ Bundle 'peterhoeg/vim-qml'
 Bundle 'walm/jshint.vim'
 Bundle 'jussi-kalliokoski/dessert.vim'
 Bundle 'wavded/vim-stylus'
+Bundle 'sbl/scvim'
+Bundle 'terryma/vim-multiple-cursors'
 
 colorscheme dessert
 
