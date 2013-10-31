@@ -123,6 +123,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
+let g:user_emmet_leader_key = '<C-e>'
+
 " Extra bundles
 Bundle 'groenewege/vim-less'
 Bundle 'closetag.vim'
@@ -142,6 +144,7 @@ Bundle 'walm/jshint.vim'
 Bundle 'jussi-kalliokoski/dessert.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'sbl/scvim'
+Bundle 'mattn/emmet-vim'
 Bundle 'terryma/vim-multiple-cursors'
 
 colorscheme dessert
