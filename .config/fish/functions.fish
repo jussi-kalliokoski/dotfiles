@@ -152,6 +152,10 @@ function row -d "Gets the Nth row of each line"
     awk "{ print \$$n }"
 end
 
+function fl -d "Returns the filenames of a result of a grep operation"
+    ack -o "^[^:]+" | sort | uniq
+end
+
 function nth -d "Gets the nth line of input"
     set -l length 1
     set -l first (math $argv[1] + $length)
