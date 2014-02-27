@@ -176,6 +176,9 @@ au BufNewFile,BufRead *.qml set filetype=qml
 " enable qml syntax highlighting
 au BufNewFile,BufRead *.styl set filetype=stylus
 
+" Folds blow
+au BufRead * set nofoldenable
+
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
