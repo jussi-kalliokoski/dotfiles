@@ -8,7 +8,7 @@
 	d = difftool
 	standup = log --since yesterday --oneline --author jussi.kalliokoski
 	todo = grep -n -e TODO -e FIXME -e XXX -e OPTIMIZE -e HACK
-    save = !git add -A . && git commit -nmWIP
+	save = !git add -A . && git commit -nmWIP
 [color]
 	ui = true
 [core]
