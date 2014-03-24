@@ -100,6 +100,10 @@ function add-host
 	printf "%s\t%s" (host $argv[1] | awk "{print \$4}") $argv[1]
 end
 
+function git-list-branches -d "Lists branches in the git repo without highlighting current one"
+    git branch | ack -o "(?<=..).+"
+end
+
 function git-pick-file -d "Cherry pick commits that have changes to specified files"
 	# store current branch
 	set -l branch (git_branch)
@@ -169,6 +173,20 @@ end
 function rn -d "Renames a file"
     set -l directory (dirname $argv[1])
     mv $argv[1] $directory/$argv[2]
+end
+
+function standup-for-repo
+    for branch in git-list-branches
+        git standup $branch
+    end | awk "!seen[\$0]++"
+end
+
+function standup -d "Shows what you did yesterday"
+    for repo in ~/Code/*/
+        cd $repo
+        echo "$repo:"
+        standup-for-repo
+    end
 end
 
 function GET
