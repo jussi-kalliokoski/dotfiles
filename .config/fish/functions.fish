@@ -48,6 +48,10 @@ function dotfiles_sync
 	cd $old_pwd
 end
 
+function now -d "Prints the current time (UNIX Epoch) in milliseconds"
+    coffee -e "process.stdout.write(Date.now()+'')"
+end
+
 function tn
 	tmux new-session -s $argv
 end
