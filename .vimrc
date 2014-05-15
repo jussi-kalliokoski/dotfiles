@@ -160,7 +160,7 @@ au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 au BufNewFile,BufRead *.{less,css} set filetype=less
 
 " enable coffeescript syntax highlighting
-au BufNewFile,BufRead *.coffee set filetype=coffee
+au BufNewFile,BufRead *.{coffee,cson} set filetype=coffee
 
 " enable handlebars syntax highlighting
 au BufNewFile,BufRead *.handlebars set filetype=html
