@@ -2,4 +2,5 @@
 *.*.swp
 Session.vim
 *node_modules
+*bower_components
 *.tern-port
