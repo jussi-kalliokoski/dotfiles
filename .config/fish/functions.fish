@@ -208,3 +208,7 @@ end
 function PATCH
     curl -iX PATCH $argv
 end
+
+function json
+    underscore print --color
+end
