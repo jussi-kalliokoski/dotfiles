@@ -9,6 +9,7 @@
 	standup = log --since yesterday --oneline --author jussi.kalliokoski
 	todo = grep -n -e TODO -e FIXME -e XXX -e OPTIMIZE -e HACK
 	save = !git add -A . && git commit -nmWIP
+	cleanup = !"for branch in `git branch | ack \"^  \"`; do git branch -qd $branch >/dev/null 2>&1; done"
 [color]
 	ui = true
 [core]
