@@ -146,6 +146,7 @@ Bundle 'wavded/vim-stylus'
 Bundle 'sbl/scvim'
 Bundle 'mattn/emmet-vim'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'mxw/vim-jsx'
 
 colorscheme dessert
 
