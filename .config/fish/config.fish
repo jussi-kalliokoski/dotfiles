@@ -45,7 +45,6 @@ set PATH /sbin /usr/sbin /bin /usr/bin
 set PATH /usr/local/sbin $PATH
 set PATH /usr/local/bin $PATH
 set PATH /usr/local/share/npm/bin $PATH
-set PATH ~/.rvm/bin $PATH
 
 # Include machine-specific extras, if any
 if test -f ~/.config/fish/extras.fish; . ~/.config/fish/extras.fish; end
