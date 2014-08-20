@@ -29,11 +29,15 @@ function fish_prompt
         echo -n '$'
     end
     set_color --bold blue
-    echo -n '] <'
-    echo -n (git_branch)
-    echo -n (git_info)
-    set_color --bold blue
-    echo -n '> '
+    echo -n '] '
+    set -l GIT_BRANCH (git_branch)
+    if [ "$GIT_BRANCH" != "" ]
+        echo -n '<'
+        echo -n $GIT_BRANCH
+        echo -n (git_info)
+        set_color --bold blue
+        echo -n '> '
+    end
     set_color normal
     # Tell TMUX the CWD
     if set -q TMUX; tmux setenv TMUXPWD_(tmux display -p "#D" | tr -d "%") "$PWD"; end
