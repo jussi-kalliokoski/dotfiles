@@ -23,7 +23,11 @@ function fish_prompt
     set_color --bold blue
     echo -n '] - ['
     set_color --bold purple
-    echo -n '$'
+    if [ (id -u -rn) = "root" ]
+        echo -n '#'
+    else
+        echo -n '$'
+    end
     set_color --bold blue
     echo -n '] <'
     echo -n (git_branch)
