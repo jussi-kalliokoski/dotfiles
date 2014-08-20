@@ -117,13 +117,13 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
 
+let g:user_emmet_leader_key = '<C-e>'
+
 " Vundle
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-
-let g:user_emmet_leader_key = '<C-e>'
 
 " Extra bundles
 Bundle 'groenewege/vim-less'
@@ -140,42 +140,21 @@ Bundle 'mozfr/mozilla.vim'
 Bundle 'helino/vim-json'
 Bundle 'jussi-kalliokoski/harmony.vim'
 Bundle 'peterhoeg/vim-qml'
-Bundle 'walm/jshint.vim'
 Bundle 'jussi-kalliokoski/dessert.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'sbl/scvim'
 Bundle 'mattn/emmet-vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'mxw/vim-jsx'
+Bundle 'scrooloose/syntastic'
+
+" Initialize pathogen
+
+execute pathogen#infect()
+
+" Set color scheme
 
 colorscheme dessert
-
-" enable ooc syntax highlighting
-au BufNewFile,BufRead *.ooc set filetype=ooc
-
-" enable markdown syntax highlighting
-au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
-
-" enable less syntax highlighting
-au BufNewFile,BufRead *.{less,css} set filetype=less
-
-" enable coffeescript syntax highlighting
-au BufNewFile,BufRead *.{coffee,cson} set filetype=coffee
-
-" enable handlebars syntax highlighting
-au BufNewFile,BufRead *.handlebars set filetype=html
-
-" enable fish syntax highlighting
-au BufNewFile,BufRead *.fish set filetype=fish
-
-" enable json syntax highlighting
-au BufNewFile,BufRead *.{json,jshintrc} set filetype=json
-
-" enable qml syntax highlighting
-au BufNewFile,BufRead *.qml set filetype=qml
-
-" enable qml syntax highlighting
-au BufNewFile,BufRead *.styl set filetype=stylus
 
 " Folds blow
 au BufRead * set nofoldenable
@@ -187,7 +166,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd BufWritePost,FileWritePost *.js JSHint
 
 autocmd FileType coffee :call SetIndent(2)
 autocmd FileType json :call SetIndent(2)
