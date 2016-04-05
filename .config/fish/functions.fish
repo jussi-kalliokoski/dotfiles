@@ -212,3 +212,7 @@ end
 function json
     underscore print --color
 end
+
+function glh
+    git log --pretty="%H" $argv
+end
