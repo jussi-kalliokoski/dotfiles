@@ -62,6 +62,11 @@ for executable in platform_bin/all/*; do
     link_prompt ~/.dotfiles/$executable $PREFIX/bin/${executable##*/}
 done
 
+if ! test -e ~/.tmux/plugins/tpm; then
+    mkdir -p ~/.tmux/plugins
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 vim "+BundleInstall" "+qall"
 cd ~/.dotfiles/.vim/bundle/tern_for_vim
 npm install
