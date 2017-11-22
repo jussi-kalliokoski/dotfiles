@@ -56,3 +56,6 @@ set PATH /usr/local/share/npm/bin $PATH
 
 # Include machine-specific extras, if any
 if test -f ~/.config/fish/extras.fish; . ~/.config/fish/extras.fish; end
+
+# Include iTerm2 integration where applicable
+if test -f ~/.iterm2_shell_integration.fish; . ~/.iterm2_shell_integration.fish; end
