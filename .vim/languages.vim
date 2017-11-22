@@ -28,5 +28,12 @@ if executable('go-langserver')
     \ })
 endif
 
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'whitelist': ['*'],
+    \ 'blacklist': ['go'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ }))
+
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
