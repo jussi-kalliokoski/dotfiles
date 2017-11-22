@@ -6,3 +6,5 @@ Session.vim
 *.tern-port
 *.idea
 npm-debug.log
+nsqd.*.dat
+*.diskqueue.meta.dat
