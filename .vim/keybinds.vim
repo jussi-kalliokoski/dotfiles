@@ -25,3 +25,6 @@ vnoremap k gk
 " Ctrl-T to open a file
 nnoremap <C-T> <Esc>:call OpenFuzzy()<CR>
 nnoremap <Leader><C-T> <Esc>:call OpenRelative()<CR>
+
+" <Leader>gg To git grep for word under cursor
+nnoremap <Leader>gg "zyiw:exe "!git grep ".@z""<CR>
