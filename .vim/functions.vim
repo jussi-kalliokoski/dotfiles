@@ -20,11 +20,51 @@ function! TabIsEmpty()
     endif
 endfunction
 
+function! DropTabCheckWindow(filename)
+    if g:dropTabFoundTab < 0 && g:dropTabFoundWindow < 0 && a:filename == expand("%")
+        let g:dropTabFoundTab = tabpagenr()
+        let g:dropTabFoundWindow = winnr()
+    endif
+endfunction
+
+function! DropTabFindInCurrent(filename)
+    let currentWindow = winnr()
+
+    windo call DropTabCheckWindow(a:filename)
+
+    " Go back to initial window
+    exe currentWindow . "wincmd w"
+endfunction
+
+" More or less native viml implementation of :tab pick for non-GUI installations
+function! DropTab(filename)
+    let g:dropTabFoundTab = -1
+    let g:dropTabFoundWindow = -1
+
+    let currentTab = tabpagenr()
+
+    tabdo call DropTabFindInCurrent(a:filename)
+
+    " Go back to initial tab
+    exe "tabn " . currentTab
+
+    if g:dropTabFoundTab < 0 || g:dropTabFoundTab < 0
+        " Open in new tab
+        exe "tabedit " . a:filename
+    else
+        " Select tab & window
+        exe "tabn " . g:dropTabFoundTab
+        exe g:dropTabFoundWindow . "wincmd w"
+    endif
+endfunction
+
+command! -nargs=1 DropTab call DropTab(<f-args>)
+
 function! OpenFuzzy()
     if TabIsEmpty() == 1
         call PickFile()
     else
-        call PickFileTab()
+        call PickCommand("git ls-files --cached --exclude-standard --others -- .", "", ":DropTab", 1)
     endif
 endfunction
 
