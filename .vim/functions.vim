@@ -83,11 +83,11 @@ function! SwapWindow()
         " Switch to source and shuffle dest->source
         let markedBuf = bufnr( "%" )
         " Hide and open so that we aren't prompted and keep history
-        exe 'hide buf' curBuf
+        exe "hide buf" curBuf
         " Switch to dest and shuffle source->dest
         exe curNum . "wincmd w"
         " Hide and open so that we aren't prompted and keep history
-        exe 'hide buf' markedBuf
+        exe "hide buf" markedBuf
         " Unmark
         unlet g:markedWinNum
         echo "Swapped buffers!"
