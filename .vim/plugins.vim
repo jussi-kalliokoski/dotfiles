@@ -26,5 +26,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript'
+Plug 'fatih/vim-go'
 
 call plug#end()

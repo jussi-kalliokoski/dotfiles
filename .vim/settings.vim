@@ -62,6 +62,9 @@ au BufRead * set nofoldenable
 " Disable automatic comments
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Disable default key mappings for go-vim
+let g:go_def_mapping_enabled = 0
+
 " Make sure quickfix window closes along with the window it's associated with
 aug QFClose
     au!
