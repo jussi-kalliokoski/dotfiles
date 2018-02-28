@@ -68,7 +68,7 @@ if ! test -e ~/.tmux/plugins/tpm; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-vim "+BundleInstall" "+qall"
+vim "+PlugInstall" "+qall"
 cd ~/.dotfiles/.vim/bundle/tern_for_vim
 npm install
 
