@@ -54,6 +54,7 @@ add .tmux.conf
 mkdir -p ~/.config
 add .config/fish/*.fish
 add .config/xcolors/thayer
+add .phoenix.js
 
 for executable in platform_bin/$OS/*; do
     link_prompt ~/.dotfiles/$executable $PREFIX/bin/${executable##*/}
