@@ -69,8 +69,6 @@ if ! test -e ~/.tmux/plugins/tpm; then
 fi
 
 vim "+PlugInstall" "+qall"
-cd ~/.dotfiles/.vim/bundle/tern_for_vim
-npm install
 
 # GNOME 3
 if command -v gsettings >/dev/null 2>&1; then
