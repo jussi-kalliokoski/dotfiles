@@ -53,6 +53,7 @@ add .Xdefaults
 add .tmux.conf
 mkdir -p ~/.config
 add .config/fish/*.fish
+mkdir -p ~/.config/xcolors
 add .config/xcolors/thayer
 add .phoenix.js
 
