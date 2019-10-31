@@ -35,5 +35,14 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
     \ 'completor': function('asyncomplete#sources#buffer#completor'),
     \ }))
 
+call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
+    \ 'name': 'gocode',
+    \ 'whitelist': ['go'],
+    \ 'completor': function('asyncomplete#sources#gocode#completor'),
+    \ 'config': {
+    \    'gocode_path': expand('~/Code/go-workspace/bin/gocode')
+    \  },
+    \ }))
+
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
