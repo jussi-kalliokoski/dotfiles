@@ -1,3 +1,33 @@
+abbr --add tn 'tmux new-session -s'
+abbr --add ta 'tmux attach -t'
+abbr --add tls 'tmux ls'
+abbr --add gg 'git grep'
+abbr --add gb 'git branch'
+abbr --add gc 'git checkout'
+abbr --add gcb 'git checkout -b'
+abbr --add gcm 'git checkout master'
+abbr --add gs 'git status'
+abbr --add gw 'git whatchanged'
+abbr --add gcl 'git clone'
+abbr --add gfa 'git fetch --all'
+abbr --add gpb 'git push -u origin (git_branch)'
+abbr --add gl 'git log'
+abbr --add glo 'git log --pretty="oneline"'
+abbr --add glh 'git log --pretty="%H"'
+abbr --add gre 'git rebase'
+abbr --add gri 'git rebase -i'
+abbr --add grc 'git rebase --continue'
+abbr --add gra 'git rebase --abort'
+abbr --add grh 'git reset "HEAD^"'
+abbr --add gad 'git add'
+abbr --add gco 'git commit'
+abbr --add gls 'git ls-files'
+abbr --add gdi 'git diff'
+abbr --add gdc 'git diff --cached'
+abbr --add gds 'git diff --shortstat'
+abbr --add gdS 'git diff --shortstat --cached'
+abbr --add gdm 'git diff (git merge-base --fork-point origin/master)'
+
 function fish_reload
     . ~/.config/fish/config.fish
 end
@@ -52,50 +82,6 @@ function now -d "Prints the current time (UNIX Epoch) in milliseconds"
     coffee -e "process.stdout.write(Date.now()+'')"
 end
 
-function tn
-    tmux new-session -s $argv
-end
-
-function ta
-    tmux attach -t $argv
-end
-
-function tls
-    tmux ls
-end
-
-function gg
-    git grep $argv
-end
-
-function gb
-    git branch $argv
-end
-
-function gc
-    git checkout $argv
-end
-
-function gs
-    git status $argv
-end
-
-function gw
-    git whatchanged $argv
-end
-
-function gls
-    git ls-files $argv
-end
-
-function gfa
-    git fetch --all
-end
-
-function gpb
-    git push -u origin (git_branch)
-end
-
 function add-host
     printf "%s\t%s" (host $argv[1] | awk "{print \$4}") $argv[1]
 end
@@ -122,7 +108,7 @@ function git-pick-file -d "Cherry pick commits that have changes to specified fi
 end
 
 function git-sed -d "Performs a sed operation for all files in the git tree"
-    sed $argv (gls)
+    sed $argv (git ls-files)
 end
 
 function git-get-commits -d "Gets the hashes of commits in the log."
@@ -152,7 +138,7 @@ end
 function tunnel -d "Tunnel a local port to a remote port"
     set -l local_port $argv[1]
     set -l remote_port $argv[2]
-    ssh jussi@a -R $remote_port:(lan_ip):$local_port -N
+    ssh $TUNNEL_ACCOUNT -R $remote_port:(lan_ip):$local_port -N
 end
 
 function row -d "Gets the Nth row of each line"
@@ -187,6 +173,10 @@ function standup -d "Shows what you did yesterday"
         echo "$repo:"
         standup-for-repo
     end
+end
+
+function gopg -d "Local golang playground"
+    vim (mktemp -d)/main.go +w
 end
 
 function GET
