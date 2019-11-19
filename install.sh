@@ -55,6 +55,8 @@ mkdir -p ~/.config
 add .config/fish/*.fish
 mkdir -p ~/.config/xcolors
 add .config/xcolors/thayer
+mkdir -p ~/.config/alacritty
+add .config/alacritty/alacritty.yml
 add .phoenix.js
 
 for executable in platform_bin/$OS/*; do
