@@ -13,7 +13,7 @@ First, make sure that the current user has rights to ``` $PREFIX/bin ``` (usuall
 Then, install:
 
 ```sh
-$ curl https://raw.github.com/jussi-kalliokoski/dotfiles/master/install.sh | bash
+$ curl https://raw.githubusercontent.com/jussi-kalliokoski/dotfiles/master/install.sh | bash
 ```
 
 ## Disclaimer
