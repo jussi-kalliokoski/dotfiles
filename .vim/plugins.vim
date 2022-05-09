@@ -31,5 +31,6 @@ Plug 'prabirshrestha/asyncomplete-buffer.vim'
 Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 Plug 'fatih/vim-go'
 Plug 'buoto/gotests-vim'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
