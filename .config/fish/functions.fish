@@ -60,7 +60,7 @@ function dotfiles_sync
         return 0
     end
 
-    if not git diff --quiet HEAD ^&-
+    if not git diff --quiet HEAD &> /dev/null
         echo "You have uncommitted changes to your dotfiles."
         if prompt "Would you like to commit them in?"; and git commit -a
 
