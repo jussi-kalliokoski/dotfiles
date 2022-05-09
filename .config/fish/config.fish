@@ -57,3 +57,11 @@ if test -f ~/.config/fish/extras.fish; . ~/.config/fish/extras.fish; end
 
 # Include iTerm2 integration where applicable
 if test -f ~/.iterm2_shell_integration.fish; . ~/.iterm2_shell_integration.fish; end
+
+# volta.sh
+set -gx VOLTA_HOME "$HOME/.volta"
+test -s "$VOLTA_HOME/load.fish"; and source "$VOLTA_HOME/load.fish"
+string match -r ".volta" "$PATH" > /dev/null; or set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+# toolchain
+test -s "$HOME/tools/plugin.fish"; and source "$HOME/tools/plugin.fish"
