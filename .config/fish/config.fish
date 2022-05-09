@@ -4,7 +4,7 @@ set -x EDITOR "vim"
 set -x BROWSER "open"
 
 function git_info -d "Print a star if the current git branch is dirty"
-    git diff --quiet HEAD ^&-
+    git diff --quiet HEAD &> /dev/null
     if test $status = 1
         echo '*'
     end
