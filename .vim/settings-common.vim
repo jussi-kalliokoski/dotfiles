@@ -57,3 +57,5 @@ set conceallevel=0
 " Remove all trailing space on save
 autocmd BufWritePre * %s/\s\+$//e
 
+" Allow more tab pages (nice for opening with -p)
+set tabpagemax=100
