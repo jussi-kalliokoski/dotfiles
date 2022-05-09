@@ -3,6 +3,8 @@
 	email = jussi.kalliokoski@gmail.com
 [push]
 	default = simple
+[pull]
+    ff = only
 [alias]
 	diff = diff --color=always
 	d = difftool
