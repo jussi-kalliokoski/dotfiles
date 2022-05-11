@@ -51,7 +51,7 @@ add .gitconfig .gitignore_global
 add .inputrc
 add .Xdefaults
 add .tmux.conf
-mkdir -p ~/.config
+mkdir -p ~/.config/fish
 add .config/fish/*.fish
 mkdir -p ~/.config/xcolors
 add .config/xcolors/thayer
