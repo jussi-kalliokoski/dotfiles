@@ -2,6 +2,7 @@ set -x LANG en_US.UTF-8
 set -x LESS "-EQRX"
 set -x EDITOR "vim"
 set -x BROWSER "open"
+set -x DOTFILES_SYNC_COMMAND "curl https://raw.githubusercontent.com/jussi-kalliokoski/dotfiles/master/install.sh | bash"
 
 function git_info -d "Print a star if the current git branch is dirty"
     git diff --quiet HEAD &> /dev/null
