@@ -46,7 +46,7 @@ add(){
     done
 }
 
-if [ "$OS" == "linux" ] && command -v apt-get &>/dev/null; then
+if [ "$OS" == "linux" ] && command -v apt-get >/dev/null 2>&1; then
     apt-get install -y tmux fish vim git
 fi
 
