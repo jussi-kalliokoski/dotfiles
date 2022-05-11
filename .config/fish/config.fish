@@ -51,7 +51,7 @@ end
 set PATH /sbin /usr/sbin /bin /usr/bin
 
 # More paths
-set PATH /usr/local/bin $PATH
+set PATH /usr/local/bin "$HOME/bin" $PATH
 
 # Include machine-specific extras, if any
 if test -f ~/.config/fish/extras.fish; . ~/.config/fish/extras.fish; end

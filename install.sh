@@ -15,7 +15,11 @@ OLD_PWD=`pwd`
 cd ~/.dotfiles
 
 if [ "$PREFIX" == "" ]; then
-    PREFIX="/usr/local"
+    if [ OS == "osx" ]; then
+        PREFIX="/usr/local"
+    else
+        PREFIX=~
+    fi
 fi
 
 # link, confirm if directory
@@ -47,7 +51,7 @@ add(){
 }
 
 if [ "$OS" == "linux" ] && command -v apt-get >/dev/null 2>&1; then
-    apt-get install -y tmux fish vim git
+    sudo apt-get install -y tmux fish vim git
 fi
 
 add .vimrc .vim
