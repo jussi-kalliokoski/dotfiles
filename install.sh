@@ -46,6 +46,10 @@ add(){
     done
 }
 
+if [ "$OS" == "linux" ] && command -v apt-get &>/dev/null; then
+    apt-get install -y tmux fish vim git
+fi
+
 add .vimrc .vim
 add .gitconfig .gitignore_global
 add .inputrc
