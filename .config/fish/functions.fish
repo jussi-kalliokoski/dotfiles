@@ -27,6 +27,7 @@ abbr --add gdc 'git diff --cached'
 abbr --add gds 'git diff --shortstat'
 abbr --add gdS 'git diff --shortstat --cached'
 abbr --add gdm 'git diff (git merge-base --fork-point origin/master)'
+abbr --add n 'nvim'
 
 function fish_reload
     . ~/.config/fish/config.fish
