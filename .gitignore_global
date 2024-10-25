@@ -10,3 +10,5 @@ npm-debug.log
 nsqd.*.dat
 *.diskqueue.meta.dat
 *.prof
+*profile.out
+__pycache__
