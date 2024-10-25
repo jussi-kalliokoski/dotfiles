@@ -9,6 +9,7 @@ nnoremap goref <Esc>:GoReferrers<CR>
 nnoremap gotest <Esc>:GoTest<CR>
 nnoremap gotefn <Esc>:GoTestFunc<CR>
 nnoremap goerr <Esc>:GoIfErr<CR>
+nnoremap gott <Esc>:!go test -v -cover ./$(dirname %)<CR>
 
 " Macros
 nnoremap gocom yiwO//<Space><Esc>pA<Space>
