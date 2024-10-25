@@ -19,7 +19,6 @@ Plug 'ervandew/supertab'
 
 Plug 'k0kubun/vim-open-github'
 Plug 'calleerlandsson/pick.vim'
-Plug 'w0rp/ale'
 Plug 'Shougo/neosnippet.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -32,5 +31,6 @@ Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 Plug 'fatih/vim-go'
 Plug 'buoto/gotests-vim'
 Plug 'rust-lang/rust.vim'
+Plug 'github/copilot.vim'
 
 call plug#end()
