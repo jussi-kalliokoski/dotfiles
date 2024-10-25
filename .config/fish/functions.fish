@@ -207,3 +207,12 @@ end
 function glh
     git log --pretty="%H" $argv
 end
+
+function c2hex
+    pbpaste | node -e '
+const input = fs.readFileSync("/dev/stdin", "utf-8").trim();
+const color = input.split(/\s+/).map(s => parseInt(s, 10));
+const hex = "#" + color.map(v => v.toString(16).padStart(2, "0")).join("");
+console.log(hex);
+    ' | pbcopy
+end
